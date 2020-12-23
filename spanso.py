@@ -1,23 +1,46 @@
 # Hi I am Spanso
-import os
+wh = "what is"
+import wikipedia
 import time
 import pyttsx3
 engine = pyttsx3.init()
-print("'credits to Ayush Moghe'")
-time.sleep(8)
-print('Loading Spanso...')
-time.sleep(5)
-engine.say("Hello, sir!")
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[1].id)
+engine.say("hello!!")
 engine.runAndWait()  
 print('Hello, Sir')
-while 1 == 1:
+def mic():
+    import speech_recognition as sr
+    recognizer = sr.Recognizer()
+    ''' recording the sound '''
+    with sr.Microphone() as source:
+        print("Adjusting noise ")
+        recognizer.adjust_for_ambient_noise(source, duration=1)
+        print("recording...")
+        cmdcs = recognizer.listen(source)
+        print("Done recording")
+        try:
+            global text
+            print("Recognizing the text")
+            text = recognizer.recognize_google(
+        cmdcs, 
+        language="en-IN"
+            
+        )
+            global cmd
+            cmd = text
+            print("Decoded Text : {}".format(text))
+        except Exception as ex:
+            print(ex)
+    cmd = text
     import pyttsx3
     engine = pyttsx3.init()
-    cmd = input()
     if cmd == ('o'):
+        cmd = ""
         engine.say("d")
         engine.runAndWait()            
     if cmd == ('hi'):
+        cmd = ""
         engine.say("hi")
         engine.runAndWait()        
     if cmd == ('web'):
@@ -214,6 +237,7 @@ while 1 == 1:
                 engine.runAndWait()
                 break
     if cmd == ('what is my name'):
+        cmd = ""
         engine.say("Ayush")
         engine.runAndWait()
     if cmd == ('bye'):
@@ -267,88 +291,13 @@ while 1 == 1:
         engine.runAndWait()
     if cmd == ('sing in your voice'):
         engine.say("I can only sing one song, so let us start,  Tuujhe, Dekhaa, to ye jaanaa, sanam, pyaar hotaa deevaanaa sanam, aab kahan, se jayen hum, teri baahon me ghaar jaaye haam.tujhe dekha!   I don't know any more!!")
-        engine.runAndWait
-                   
-            
-
-
-    
-        
-        
-    
-    
-
-
-        
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-            
-           
-
-             
-
-       
-
-        
-
-        
-          
-        
-         
-    
-        
-    
-    
-
-        
-    
-
-        
-            
-        
-
-        
-            
-        
-    
-    
-
-        
-
-        
-
-        
-
-
-
-
-
-        
-    
-
-
+        engine.runAndWait()
+    if wh in cmd:
+        engine.say(wikipedia.summary(cmd))
+        engine.runAndWait()
+#######################################################################################################################################################################################################################################
+while True:
+    try:
+        mic()
+    except:
+        None
