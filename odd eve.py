@@ -20,3 +20,41 @@ if y == ('odd'):
 if y == ('eve'):
     rt = random.choice(eve_no)
     print(rt)
+num = int(input("what will be the total,please sach bolna: "))
+if (num % 2) == 0 and  x == ('odd'):
+   print("{0} is Even".format(num))
+   print('I chose to ball')
+   y = ('ball')
+else:
+   print("{0} is Odd".format(num))
+   print('what do you choose')
+   choice = input('bat/ball: ')
+   if choice == ('bat'):
+       print('ball')
+       y = 'ball'
+   else:
+       print('please take bat,your is bat')
+while True:
+        ccs = int(input('number: '))
+        while point_1 > 19999999999:
+            ccs = point_1+ccs
+            break
+        rs = random.randint(0,10)
+        print(ccs)
+        if ccs == rs:
+            print('you are out')
+            break
+        
+ol = int(input("What's the target? "))
+while point_2 < ol:
+    sst = input('enter num: ')
+    ost = random.randint(0,11)
+    point_2 = point_2 + ost
+    print(point_2)
+    if ost == sst:
+        print('out')
+        break
+    if point_2 > ol:
+        print('ya I won')
+        break
+    print('lol')
